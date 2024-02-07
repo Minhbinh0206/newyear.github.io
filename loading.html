@@ -35,10 +35,7 @@
             </div>
         </div>
     </div>
-    <?php
-    // Bắt đầu session
-    session_start();
-
+    <!-- <?php
     // Lấy giây hiện tại
     $date = time();
 
@@ -57,10 +54,52 @@
         header('Refresh: 3;url=home.php'); // Chuyển hướng sau 3 giây
         exit(); // Đảm bảo dừng thực thi ngay sau khi chuyển hướng
     }
+    ?> -->
+    <script>
+        // Lấy giây hiện tại
+        var date = Math.floor(Date.now() / 1000);
 
-    var_dump($load);
-    var_dump($currentSecond);
-    ?>
+        // Kiểm tra xem cookie 'currentSecond' đã được tạo chưa
+        var currentSecond = getCookie('currentSecond');
+
+        if (!currentSecond) {
+            // Nếu chưa, lấy giây hiện tại và lưu vào cookie với thời hạn là 3 giây
+            setCookie('currentSecond', date, 3);
+        }
+
+        // Kiểm tra nếu cookie 'currentSecond' tồn tại thì lấy giá trị, ngược lại gán giá trị mặc định là null
+        currentSecond = currentSecond || null;
+
+        var load = Math.floor(date % 60);
+
+        // Kiểm tra nếu giây hiện tại và giây lưu trong cookie giống nhau
+        if (currentSecond === null) {
+            setTimeout(function () {
+                window.location.href = 'home.html'; // Chuyển hướng sau 3 giây
+            }, 3000);
+        }
+
+        // Hàm để lấy giá trị của cookie
+        function getCookie(name) {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.startsWith(name + '=')) {
+                    return cookie.substring(name.length + 1);
+                }
+            }
+            return null;
+        }
+
+        // Hàm để thiết lập giá trị của cookie
+        function setCookie(name, value, seconds) {
+            var d = new Date();
+            d.setTime(d.getTime() + seconds * 1000);
+            var expires = 'expires=' + d.toUTCString();
+            document.cookie = name + '=' + value + ';' + expires + ';path=/';
+        }
+    </script>
+
 </body>
 
 </html>
