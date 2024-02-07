@@ -80,9 +80,8 @@
 </head>
 
 <body>
-    <audio controls autoplay hidden>
+    <audio id="myAudio" controls autoplay hidden>
         <source src="audio/world-asian-carnival-china-traditional-music-travel-118593.mp3" type="audio/mpeg">
-        Your browser does not support the audio tag.
     </audio>
     <div class="content-first">
         <div class="content-first-item"></div>
@@ -90,6 +89,28 @@
     <br>
     <a href="flashcard.html" class="content-second">Mở thiệp</a>
     <script type="text/javascript" src="https://sharethuthuat.com/php/tet/tet.js"></script>
+    <script>
+        // Lấy thẻ audio
+        var audio = document.getElementById("myAudio");
+    
+        // Kiểm tra nếu đã có dữ liệu đã lưu trong sessionStorage
+        var savedTime = sessionStorage.getItem("audioTime");
+        if (savedTime) {
+            audio.currentTime = parseFloat(savedTime);
+        }
+    
+        // Lưu thời gian hiện tại khi audio chạy
+        audio.addEventListener("timeupdate", function() {
+            sessionStorage.setItem("audioTime", audio.currentTime.toString());
+        });
+    
+        // Nếu bạn muốn tự động chuyển trang khi âm thanh kết thúc
+        audio.addEventListener("ended", function() {
+            // Thực hiện các hành động bạn muốn khi âm thanh kết thúc
+            // Ví dụ: chuyển đến trang mới
+            window.location.href = "flashcard.html";
+        });
+    </script>    
 </body>
 
 </html>

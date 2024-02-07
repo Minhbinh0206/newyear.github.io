@@ -8,6 +8,9 @@
 		<link rel="stylesheet" href="./style2.css" />
 	</head>
 	<body>
+		<audio id="myAudio" controls autoplay hidden>
+			<source src="audio/world-asian-carnival-china-traditional-music-travel-118593.mp3" type="audio/mpeg">
+		</audio>
 		<main>
 			<section class="main">
 				<span>
@@ -22,5 +25,20 @@
 			<h1 class="msg"></h1>
 		</main>
 		<script src="./main.js"></script>
+		<script>
+			var audio = document.getElementById("myAudio");
+			var savedTime = sessionStorage.getItem("audioTime");
+			if (savedTime) {
+				audio.currentTime = parseFloat(savedTime);
+			}
+	
+			audio.addEventListener("timeupdate", function () {
+				sessionStorage.setItem("audioTime", audio.currentTime.toString());
+			});
+	
+			audio.addEventListener("ended", function () {
+				window.location.href = "flashcard.html";
+			});
+		</script>
 	</body>
 </html>

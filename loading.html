@@ -10,6 +10,9 @@
 </head>
 
 <body>
+    <audio id="myAudio" controls autoplay hidden>
+        <source src="audio/world-asian-carnival-china-traditional-music-travel-118593.mp3" type="audio/mpeg">
+    </audio>
     <div class="main">
         <div class="shadow-wrapper">
             <div class="shadow"></div>
@@ -35,26 +38,6 @@
             </div>
         </div>
     </div>
-    <!-- <?php
-    // Lấy giây hiện tại
-    $date = time();
-
-    // Kiểm tra xem cookie 'currentSecond' đã được tạo chưa
-    if (!isset($_COOKIE['currentSecond'])) {
-        // Nếu chưa, lấy giây hiện tại và lưu vào cookie với thời hạn là 3 giây
-        setcookie('currentSecond', date('s'), time() + 3);
-    }
-
-    // Kiểm tra nếu cookie 'currentSecond' tồn tại thì lấy giá trị, ngược lại gán giá trị mặc định là null
-    $currentSecond = isset($_COOKIE['currentSecond']) ? $_COOKIE['currentSecond'] : null;
-    $load = date('s', $date);
-
-    // Kiểm tra nếu giây hiện tại và giây lưu trong cookie giống nhau
-    if ($currentSecond == null) {
-        header('Refresh: 3;url=home.php'); // Chuyển hướng sau 3 giây
-        exit(); // Đảm bảo dừng thực thi ngay sau khi chuyển hướng
-    }
-    ?> -->
     <script>
         // Lấy giây hiện tại
         var date = Math.floor(Date.now() / 1000);
@@ -98,6 +81,19 @@
             var expires = 'expires=' + d.toUTCString();
             document.cookie = name + '=' + value + ';' + expires + ';path=/';
         }
+        var audio = document.getElementById("myAudio");
+        var savedTime = sessionStorage.getItem("audioTime");
+        if (savedTime) {
+            audio.currentTime = parseFloat(savedTime);
+        }
+
+        audio.addEventListener("timeupdate", function () {
+            sessionStorage.setItem("audioTime", audio.currentTime.toString());
+        });
+
+        audio.addEventListener("ended", function () {
+            window.location.href = "flashcard.html";
+        });
     </script>
 
 </body>

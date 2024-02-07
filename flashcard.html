@@ -22,7 +22,8 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
-        .first-content{
+
+        .first-content {
             display: block;
             margin-top: 150px;
             font-size: 60px;
@@ -77,6 +78,7 @@
             background-size: cover;
             color: #ffefd4;
         }
+
         .content-second {
             padding: 7px 40px;
             text-decoration: none;
@@ -112,6 +114,9 @@
 </head>
 
 <body>
+    <audio id="myAudio" controls autoplay hidden>
+        <source src="audio/world-asian-carnival-china-traditional-music-travel-118593.mp3" type="audio/mpeg">
+    </audio>
     <div class="first-content">
         Minh chu'c em năm mới
     </div>
@@ -122,7 +127,7 @@
                 <h2>Taâi <br> Lộc</h2>
             </div>
             <div class="card back">
-                <h2>Phúc <br> lộc <br> đầy <br> nhà</h2>
+                <h2>Phu'c <br> lộc <br> đầy <br> nhaâ</h2>
             </div>
         </div>
 
@@ -131,7 +136,7 @@
                 <h2>Tình <br> Duyeên</h2>
             </div>
             <div class="card back">
-                <h2>Đong <br> đầy <br> hạnh <br> phúc</h2>
+                <h2>Đong <br> đầy <br> hạnh <br> phu'c</h2>
             </div>
         </div>
 
@@ -161,6 +166,19 @@
             card.addEventListener('click', () => {
                 card.classList.toggle('flipped');
             });
+        });
+        var audio = document.getElementById("myAudio");
+        var savedTime = sessionStorage.getItem("audioTime");
+        if (savedTime) {
+            audio.currentTime = parseFloat(savedTime);
+        }
+
+        audio.addEventListener("timeupdate", function () {
+            sessionStorage.setItem("audioTime", audio.currentTime.toString());
+        });
+
+        audio.addEventListener("ended", function () {
+            window.location.href = "flashcard.html";
         });
     </script>
 
