@@ -12,18 +12,18 @@
 	const listGift = [
 		{
 			text: '500k',
-			percent: 10 / 100,
+			percent: 2 / 100,
 		},
 		{
 			text: 'Hai tỷ cún',
-			percent: 10 / 100,
+			percent: 18 / 100,
 		},
 		{
 			text: '100k',
 			percent: 25 / 100,
 		},
 		{
-			text: 'Thỏi son mới',
+			text: 'Đồ make up tùy chọn',
 			percent: 20 / 100,
 		},
 		{
@@ -39,7 +39,7 @@
 			percent: 0 / 100,
 		},
 		{
-			text: 'Điện thoại mới',
+			text: 'Fine dining',
 			percent: 0 / 100,
 		},
 	];
