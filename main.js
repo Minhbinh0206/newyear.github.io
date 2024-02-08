@@ -39,7 +39,7 @@
 			percent: 0 / 100,
 		},
 		{
-			text: 'Fine dining',
+			text: 'Five dining',
 			percent: 0 / 100,
 		},
 	];

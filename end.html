@@ -13,11 +13,20 @@
         }
 
         body {
+            letter-spacing: 2px;
+            font-family: newYearFont;
             text-align: center;
             justify-content: center;
             background: url(img/backgroundBody.jpeg);
             background-repeat: no-repeat;
             background-size: cover;
+        }
+
+        .text-first{
+            margin-top: 180px;
+            text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 30px;
+            color: #f7e3ac;
+            font-size: 50px;
         }
 
         .content-first {
@@ -27,13 +36,25 @@
             display: inline-block;
             width: 460px;
             height: 300px;
-            margin-top: 200px;
             border-radius: 30px;
             margin-bottom: 20px;
+            margin-right: 30px;
+            margin-left: 30px;
         }
 
         .content-first-item {
-            background: url(img/avatar.jpg);
+            background: url(img/avatarMinhBinh2.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: inline-block;
+            width: 185px;
+            height: 185px;
+            border-radius: 50%;
+            margin-top: 61px;
+        }
+
+        .content-second-item {
+            background: url(img/avatarAiLinh.jpg);
             background-repeat: no-repeat;
             background-size: cover;
             display: inline-block;
@@ -74,43 +95,22 @@
             background-color: #f7e3ac;
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 30px;
             color: #DE1013;
-            transition: 0.5s ease-in;
+            transition: 1s ease-in;
         }
     </style>
 </head>
 
 <body>
-    <audio id="myAudio" controls autoplay hidden>
-        <source src="audio/world-asian-carnival-china-traditional-music-travel-118593.mp3" type="audio/mpeg">
-    </audio>
+    <h1 class="text-first">Happy New Year</h1>
     <div class="content-first">
         <div class="content-first-item"></div>
     </div>
+    <div class="content-first">
+        <div class="content-second-item"></div>
+    </div>
     <br>
-    <a href="flashcard.html" class="content-second">Mở thiệp</a>
+    <a href="https://www.facebook.com/hanguyen.binh.minh4235" class="content-second">Gửi feed back cho Buỳn Meen</a>
     <script type="text/javascript" src="https://sharethuthuat.com/php/tet/tet.js"></script>
-    <script>
-        // Lấy thẻ audio
-        var audio = document.getElementById("myAudio");
-    
-        // Kiểm tra nếu đã có dữ liệu đã lưu trong sessionStorage
-        var savedTime = sessionStorage.getItem("audioTime");
-        if (savedTime) {
-            audio.currentTime = parseFloat(savedTime);
-        }
-    
-        // Lưu thời gian hiện tại khi audio chạy
-        audio.addEventListener("timeupdate", function() {
-            sessionStorage.setItem("audioTime", audio.currentTime.toString());
-        });
-    
-        // Nếu bạn muốn tự động chuyển trang khi âm thanh kết thúc
-        audio.addEventListener("ended", function() {
-            // Thực hiện các hành động bạn muốn khi âm thanh kết thúc
-            // Ví dụ: chuyển đến trang mới
-            window.location.href = "end.html";
-        });
-    </script>    
 </body>
 
 </html>
