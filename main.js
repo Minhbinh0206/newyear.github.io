@@ -17,7 +17,7 @@
 			percent: 2 / 100,
 		},
 		{
-			text: 'Máy ảnh',
+			text: 'Maây ảnh',
 			percent: 0 / 100,
 		},
 		{
@@ -25,7 +25,7 @@
 			percent: 25 / 100,
 		},
 		{
-			text: 'Đồ make up tùy chọn',
+			text: 'Đồ make up tu`y chọn',
 			percent: 20 / 100,
 		},
 		{
@@ -33,7 +33,7 @@
 			percent: 30 / 100,
 		},
 		{
-			text: 'Quà tùy ý',
+			text: 'Quà tùuy ý',
 			percent: 5 / 100,
 		},
 		{
@@ -102,7 +102,7 @@
 			showGift(gift);
 			// Các đoạn mã khác ở trong hàm start giữ nguyên
 		} else {
-			showMsg.innerHTML = 'Hết lượt quay. Đợi sự kiện khác nheee!';
+			showMsg.innerHTML = 'Hết lượt quay ròi. <a href="end.html">Ấn dô đây nèe!<a>';
 		}
 	};
 
