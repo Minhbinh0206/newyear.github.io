@@ -102,7 +102,7 @@
 			showGift(gift);
 			// Các đoạn mã khác ở trong hàm start giữ nguyên
 		} else {
-			showMsg.innerHTML = 'Hết lượt quay ròi. <a href="end.html">Ấn dô đây nèe!<a>';
+			showMsg.innerHTML = 'Hết lượt quay ro`i. <a href="end.html" style="color: #fff288"> Tiếp tục!<a>';
 		}
 	};
 
@@ -159,7 +159,7 @@
 	const showGift = gift => {
 		let timer = setTimeout(() => {
 			isRotating = false;
-			showMsg.innerHTML = `Chúc mừng em đã nhận được "${gift.text}"`;
+			showMsg.innerHTML = `Chúc mừng em nhận được "${gift.text}"`;
 			updateDataHistory(gift); // Thêm vào lịch sử
 			clearTimeout(timer);
 		}, timeRotate);
