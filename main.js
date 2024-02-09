@@ -17,8 +17,8 @@
 			percent: 2 / 100,
 		},
 		{
-			text: 'Hai tỷ cún',
-			percent: 18 / 100,
+			text: 'Máy ảnh',
+			percent: 0 / 100,
 		},
 		{
 			text: '100k',
@@ -37,8 +37,8 @@
 			percent: 5 / 100,
 		},
 		{
-			text: 'Máy ảnh',
-			percent: 0 / 100,
+			text: '300k',
+			percent: 18 / 100,
 		},
 		{
 			text: 'Five dining',
