@@ -1,6 +1,8 @@
 (() => {
 	const $ = document.querySelector.bind(document);
 
+	let rotateCount = 0; // Số lượt đã quay
+	const canRotate = () => rotateCount < 3 && !isRotating;
 	let timeRotate = 7000; //7 giây
 	let currentRotate = 0;
 	let isRotating = false;
@@ -28,7 +30,7 @@
 		},
 		{
 			text: '200k',
-			percent:  30 / 100,
+			percent: 30 / 100,
 		},
 		{
 			text: 'Quà tùy ý',
@@ -80,22 +82,28 @@
 
 	/********** Hàm bắt đầu **********/
 	const start = () => {
-		showMsg.innerHTML = '';
-		isRotating = true;
-		//=====< Lấy 1 số ngầu nhiên 0 -> 1 >=====
-		const random = Math.random();
+		if (canRotate()) {
+			rotateCount++;
+			showMsg.innerHTML = '';
+			isRotating = true;
+			//=====< Lấy 1 số ngầu nhiên 0 -> 1 >=====
+			const random = Math.random();
 
-		//=====< Gọi hàm lấy phần thưởng >=====
-		const gift = getGift(random);
+			//=====< Gọi hàm lấy phần thưởng >=====
+			const gift = getGift(random);
 
-		//=====< Số vòng quay: 360 độ = 1 vòng (Góc quay hiện tại) >=====
-		currentRotate += 360 * 10;
+			//=====< Số vòng quay: 360 độ = 1 vòng (Góc quay hiện tại) >=====
+			currentRotate += 360 * 10;
 
-		//=====< Gọi hàm quay >=====
-		rotateWheel(currentRotate, gift.index);
+			//=====< Gọi hàm quay >=====
+			rotateWheel(currentRotate, gift.index);
 
-		//=====< Gọi hàm in ra màn hình >=====
-		showGift(gift);
+			//=====< Gọi hàm in ra màn hình >=====
+			showGift(gift);
+			// Các đoạn mã khác ở trong hàm start giữ nguyên
+		} else {
+			showMsg.innerHTML = 'Hết lượt quay. Đợi sự kiện khác nheee!';
+		}
 	};
 
 	/********** Hàm quay vòng quay **********/
@@ -131,16 +139,16 @@
 		const listItem = document.createElement('div');
 		listItem.textContent = `${gift.text}`;
 		listItem.classList.add('dataHistoryItem'); // Thêm lớp mới
-	
+
 		// Thêm phần tử mới vào đầu danh sách
 		dataHistory.insertBefore(listItem, dataHistory.firstChild);
-	
+
 		// Giữ cho danh sách ngắn gọn, ví dụ giữ 5 phần tử
 		const maxItems = 15;
 		if (dataHistory.children.length > maxItems) {
 			dataHistory.removeChild(dataHistory.children[maxItems]);
 		}
-	
+
 		// Hiển thị chữ "Lịch sử" khi danh sách không trống
 		if (dataHistory.children.length > 0) {
 			$('.history').style.display = 'block';
@@ -158,8 +166,6 @@
 	};
 
 	/********** Sự kiện click button start **********/
-	btnWheel.addEventListener('click', () => {
-		!isRotating && start();
-	});
+    btnWheel.addEventListener('click', start);
 })();
 
